@@ -66,9 +66,9 @@ application.use(body_parser.json());
 
 var mysql_connection = mysql.createConnection({
    host: 'localhost',
-   user: 'iw3htp',
+   user: 'username',
    password: 'password',
-   database: 'products',
+   database: 'database_name',
    multipleStatement: true
 });
 
