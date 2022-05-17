@@ -10,9 +10,9 @@ application.use(body_parser.json());
 // [Connection]: Need MySQL database connection.
 var mysql_connection = mysql.createConnection({
    host: 'localhost',
-   user: 'mgs_user',
-   password: 'pa55word',
-   database: 'my_guitar_shop2',
+   user: 'username',
+   password: 'password',
+   database: 'database_name',
    multipleStatement: true
 });
 
