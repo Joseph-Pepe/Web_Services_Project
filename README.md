@@ -10,7 +10,7 @@ Improves communication between the instructor and students during a class sessio
 
 # Implementation
 
-<b>Scripting Language:</b> PHP embedded in html.
+<b>Scripting Language:</b> JavaScript (NodeJS environment) .
 
 <b>Web Server:</b> Apache (localhost)
 
