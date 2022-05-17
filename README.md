@@ -17,7 +17,7 @@ Improves communication between the instructor and students during a class sessio
 <b>Database Server:</b> MySQL (PHPMyAdmin)
 
 
-`Step #1: (Download)` <b>XAMPP (Cross-Platform, Apache, MariaDB, PHP)</b> open-source web server package.
+`Step #1: (Download)` <b>XAMPP (Apache)</b> open-source web server package.
 
 [![Screen Shot 2022-03-12 at 7 54 27 PM](https://user-images.githubusercontent.com/32807576/158040258-69a4ae87-2a80-4c45-b6dc-c01b35c4671b.png)](https://www.apachefriends.org/index.html)
 
@@ -29,7 +29,6 @@ Improves communication between the instructor and students during a class sessio
 ![Screen Shot 2022-03-12 at 8 23 39 PM](https://user-images.githubusercontent.com/32807576/158040849-6daae533-50ed-497b-9b76-ff094ef8268c.png)
 
 `Step #3:` Control panel select "enable" for "localhost: 8080" in the "Network tab".
-
 
 ![Screen Shot 2022-03-18 at 5 16 38 PM](https://user-images.githubusercontent.com/32807576/159084136-b2dba10a-b109-4b10-9b51-9dc739a85e95.png)
 
