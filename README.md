@@ -39,3 +39,59 @@
 `Step #7:` On the web browser run the `localhost: 7000` on the machine.
 
 ![Screen Shot 2022-05-17 at 7 50 40 AM](https://user-images.githubusercontent.com/32807576/168804438-01a55e71-3e9c-4095-920f-d6a7ff45d129.png)
+
+`Step #8:` Prepare to install packages.
+
+`express (web framework)` `body-parser (converts post data into request body)`, `MySQL (nodejs driver to MySQL database)`.
+
+```command line
+// Small (i) means install.
+> npm i --s express express-handlers mysql body-parser
+```
+
+![Screen Shot 2022-05-17 at 3 12 12 PM](https://user-images.githubusercontent.com/32807576/168891898-bff49027-e956-4fc4-bbb3-f7d2a661d230.png)
+
+![Screen Shot 2022-05-17 at 3 12 44 PM](https://user-images.githubusercontent.com/32807576/168891984-46989b90-87e7-455e-b734-52ad4d496ff4.png)
+
+
+`Step #9:` Write a file `mysql_1.js`
+
+```javascript
+const mysql = require('mysql');
+const express = require('express');
+const body_parser = require('body-parser');
+
+var application = express();
+application.use(body_parser.json());
+
+var mysql_connection = mysql.createConnection({
+   host: 'localhost',
+   user: 'iw3htp',
+   password: 'password',
+   database: 'products',
+   multipleStatement: true
+});
+
+mysql_connection.connect((error) => {
+   if(!error)
+     console.log('Connection Successful.');
+   else
+     console.log('Connection Failed.');
+});
+
+const port_number = 7000;
+application.listen(port_number, () => console.log('listening on port 7000'));
+```
+
+`Step #10:` Create a router to get all books.
+
+```javascript
+application.get('/books', (req, res) => {
+   mysql_connection.query('select * from books', (error, rows, fields) => {
+      if(!error)
+        res.send(rows);
+      else
+        console.log(error);
+   })
+});
+```
