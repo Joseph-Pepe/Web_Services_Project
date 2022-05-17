@@ -42,9 +42,7 @@
 
 ![Screen Shot 2022-05-17 at 7 50 40 AM](https://user-images.githubusercontent.com/32807576/168804438-01a55e71-3e9c-4095-920f-d6a7ff45d129.png)
 
-`Step #8:` Prepare to install packages.
-
-`express (web framework)` `body-parser (converts post data into request body)`, `MySQL (nodejs driver to MySQL database)`.
+`Step #8:` Prepare to install packages (`express` `body-parser`, `MySQL`).
 
 ```command line
 // Small (i) means install.
