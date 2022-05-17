@@ -8,7 +8,7 @@ application.get('/insert', function(req, res){
    html += "<input type='submit' value='submit'/>";
    html += "<input type='reset' value='reset'/>";
    html += "</form>";
-   html += "</body> ree";
+   html += "</body>ree";
    
    res.send(html);
 });
