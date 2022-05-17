@@ -52,34 +52,3 @@
 ![Screen Shot 2022-05-17 at 3 12 12 PM](https://user-images.githubusercontent.com/32807576/168891898-bff49027-e956-4fc4-bbb3-f7d2a661d230.png)
 
 ![Screen Shot 2022-05-17 at 3 12 44 PM](https://user-images.githubusercontent.com/32807576/168891984-46989b90-87e7-455e-b734-52ad4d496ff4.png)
-
-
-`Step #9:` Write a file `mysql_1.js`
-
-```javascript
-const mysql = require('mysql');
-const express = require('express');
-const body_parser = require('body-parser');
-
-var application = express();
-application.use(body_parser.json());
-
-var mysql_connection = mysql.createConnection({
-   host: 'localhost',
-   user: 'username',
-   password: 'password',
-   database: 'database_name',
-   multipleStatement: true
-});
-
-mysql_connection.connect((error) => {
-   if(!error)
-     console.log('Connection Successful.');
-   else
-     console.log('Connection Failed.');
-});
-
-const port_number = 7000;
-application.listen(port_number, () => console.log('listening on port 7000'));
-```
-
