@@ -149,28 +149,3 @@ To have an application run on this server, place it in the `htdocs` folder and p
 `Step #13:` Set the environment variable to test dynamic port (on Mac use `export`, or on Windows use `set`).
 
 ![Screen Shot 2022-05-17 at 8 11 43 AM](https://user-images.githubusercontent.com/32807576/168807951-2dc2aed0-6f97-4f87-a7e6-9b2122f4ee78.png)
-
-`Step #14:` Test run the application on Chrome (left) & Microsoft Edge (right).
-
-![Screen Shot 2022-05-17 at 8 13 50 AM](https://user-images.githubusercontent.com/32807576/168808288-1038c1c3-c7a4-41b1-9b77-5140e81c81de.png)
-
-`Step #15:` Modify the file and restart the node server (change the file by adding more endpoints to the application).
-
-![Screen Shot 2022-05-17 at 8 15 47 AM](https://user-images.githubusercontent.com/32807576/168808626-ee000976-6ce9-41a5-88ea-3524b16bfd0f.png)
-
-`Step #16:` Test run the newly added endpoint (http://localhost:7000/api/info/:id). 
-
-![Screen Shot 2022-05-17 at 8 17 46 AM](https://user-images.githubusercontent.com/32807576/168809012-0019d54b-5ea0-429a-b7a3-6407e38ae238.png)
-
-`Step #17:` Test run the other newly added endpoint (http://localhost:7000/api/info/:year/:semester). 
-
-![Screen Shot 2022-05-17 at 8 18 41 AM](https://user-images.githubusercontent.com/32807576/168809197-9c1fd305-ae53-4a37-9251-50181b2b888e.png)
-
-`Step #18:` Try to test run an endpoint that has not been established on the server.
-
-![Screen Shot 2022-05-17 at 8 20 01 AM](https://user-images.githubusercontent.com/32807576/168809418-60fc7327-274e-416d-87fd-1af8046b4382.png)
-
-`Step #19:` Modify the file and restart the node server (add a new endpoint to the application to get query string information).
-
-![Screen Shot 2022-05-17 at 8 22 11 AM](https://user-images.githubusercontent.com/32807576/168809787-0435c5cf-345c-46f8-bab7-7569b9adf348.png)
-
