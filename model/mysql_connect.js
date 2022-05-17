@@ -16,7 +16,7 @@ var mysql_connection = mysql.createConnection({
    multipleStatement: true
 });
 
-// [Check Connection]: Check if MySQL started and can be accessed.
+// [Check Connection]: Check if MySQL starts up and can be accessed.
 mysql_connection.connect((error) => {
    if(!error)
      console.log('Connection Successful.');
