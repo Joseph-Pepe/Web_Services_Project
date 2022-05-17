@@ -83,15 +83,3 @@ const port_number = 7000;
 application.listen(port_number, () => console.log('listening on port 7000'));
 ```
 
-`Step #10:` Create a router to get all books.
-
-```javascript
-application.get('/books', (req, res) => {
-   mysql_connection.query('select * from books', (error, rows, fields) => {
-      if(!error)
-        res.send(rows);
-      else
-        console.log(error);
-   })
-});
-```
