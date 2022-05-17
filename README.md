@@ -93,3 +93,84 @@ To have an application run on this server, place it in the `htdocs` folder and p
 ![Screen Shot 2022-03-18 at 5 52 27 PM](https://user-images.githubusercontent.com/32807576/159088552-aba64fb0-920d-4d78-881c-4c64eaf80f4c.png)
 
 -----
+
+<b>NodeJS (Installation & Server Startup)</b>
+
+-----
+
+`Step #1:` Install NodeJS on the computer to use.
+
+![Screen Shot 2022-05-17 at 7 28 48 AM](https://user-images.githubusercontent.com/32807576/168800878-abe80335-3e96-4226-8d32-ee2d94540747.png)
+
+`Step #2:` After installing, you can check the node version.
+
+![Screen Shot 2022-05-17 at 7 28 19 AM](https://user-images.githubusercontent.com/32807576/168800770-1e0b5b6c-fba7-439f-877c-9b5b341b8196.png)
+
+`Step #3:` Run <b>npm init</b> to create an environment for an application (creates a `package.json` file for the application).
+
+![Screen Shot 2022-05-17 at 7 31 18 AM](https://user-images.githubusercontent.com/32807576/168801284-7e13c50a-705f-4f6d-b166-8f991390081f.png)
+
+`Step #4:` Create an application, and name it `app_1.js` using either a text editor (e.g., notepad) or IDE (e.g., VSCode).
+
+![Screen Shot 2022-05-17 at 7 37 47 AM](https://user-images.githubusercontent.com/32807576/168802283-a6958841-2eb2-4796-9bb9-0cb3d26efbc3.png)
+
+`Step #5:` Install express (can use `--save` to create dependencies or `--no-save` to not create dependencies).
+
+![Screen Shot 2022-05-17 at 7 41 03 AM](https://user-images.githubusercontent.com/32807576/168802819-d96b9e53-f4a6-401d-9904-30aa42715989.png)
+
+`Step #6:` Run the application `node <application_name>.js` (server is running & listens to port 7000; to stop server use `Control+C`).
+
+![Screen Shot 2022-05-17 at 7 49 22 AM](https://user-images.githubusercontent.com/32807576/168804201-25aedcf4-c8a6-4e02-b21e-ffbfbcbb33c9.png)
+
+`Step #7:` On the web browser run the `localhost: 7000` on the machine.
+
+![Screen Shot 2022-05-17 at 7 50 40 AM](https://user-images.githubusercontent.com/32807576/168804438-01a55e71-3e9c-4095-920f-d6a7ff45d129.png)
+
+`Step #8:` Modify the file and restart the node server (restart by stopping the server w/ `control+c` and start it w/ `node app_1.js`).
+
+![Screen Shot 2022-05-17 at 7 54 13 AM](https://user-images.githubusercontent.com/32807576/168805012-404b50b0-d811-459c-a56b-16e780c69ad6.png)
+
+`Step #9:` On the web browser run the url (http://localhost:7000/api/products) on the machine.
+
+![Screen Shot 2022-05-17 at 7 57 07 AM](https://user-images.githubusercontent.com/32807576/168805541-6d28c951-c299-4392-83aa-6fbc4f03b3e8.png)
+
+`Step #10:` Modify the file and restart the node server (change the file by adding another endpoint `api/names`).
+
+![Screen Shot 2022-05-17 at 8 04 48 AM](https://user-images.githubusercontent.com/32807576/168806845-4c9f6219-37c9-4006-b9fb-fea2bb9127ee.png)
+
+`Step #11:` Test run the newly added endpoint (http://localhost:7000/api/names). 
+
+![Screen Shot 2022-05-17 at 8 07 05 AM](https://user-images.githubusercontent.com/32807576/168807219-13fd7a29-2492-42d1-b4d3-3163bdf7b45c.png)
+
+`Step #12:` Make the port dynamic using either environment variable `process.env.PORT` or `7000` (save the file and restart the server). 
+
+![Screen Shot 2022-05-17 at 8 08 43 AM](https://user-images.githubusercontent.com/32807576/168807480-b292a013-7ab8-4b38-9608-7c13f9a4fd23.png)
+
+`Step #13:` Set the environment variable to test dynamic port (on Mac use `export`, or on Windows use `set`).
+
+![Screen Shot 2022-05-17 at 8 11 43 AM](https://user-images.githubusercontent.com/32807576/168807951-2dc2aed0-6f97-4f87-a7e6-9b2122f4ee78.png)
+
+`Step #14:` Test run the application on Chrome (left) & Microsoft Edge (right).
+
+![Screen Shot 2022-05-17 at 8 13 50 AM](https://user-images.githubusercontent.com/32807576/168808288-1038c1c3-c7a4-41b1-9b77-5140e81c81de.png)
+
+`Step #15:` Modify the file and restart the node server (change the file by adding more endpoints to the application).
+
+![Screen Shot 2022-05-17 at 8 15 47 AM](https://user-images.githubusercontent.com/32807576/168808626-ee000976-6ce9-41a5-88ea-3524b16bfd0f.png)
+
+`Step #16:` Test run the newly added endpoint (http://localhost:7000/api/info/:id). 
+
+![Screen Shot 2022-05-17 at 8 17 46 AM](https://user-images.githubusercontent.com/32807576/168809012-0019d54b-5ea0-429a-b7a3-6407e38ae238.png)
+
+`Step #17:` Test run the other newly added endpoint (http://localhost:7000/api/info/:year/:semester). 
+
+![Screen Shot 2022-05-17 at 8 18 41 AM](https://user-images.githubusercontent.com/32807576/168809197-9c1fd305-ae53-4a37-9251-50181b2b888e.png)
+
+`Step #18:` Try to test run an endpoint that has not been established on the server.
+
+![Screen Shot 2022-05-17 at 8 20 01 AM](https://user-images.githubusercontent.com/32807576/168809418-60fc7327-274e-416d-87fd-1af8046b4382.png)
+
+`Step #19:` Modify the file and restart the node server (add a new endpoint to the application to get query string information).
+
+![Screen Shot 2022-05-17 at 8 22 11 AM](https://user-images.githubusercontent.com/32807576/168809787-0435c5cf-345c-46f8-bab7-7569b9adf348.png)
+
