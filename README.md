@@ -14,7 +14,7 @@ Improves communication between the instructor and students during a class sessio
 
 <b>Web Server:</b> Local Machine (localhost)
 
-<b>Database Server:</b> MySQL (PHPMyAdmin)
+<b>Database Server:</b> MySQL
 
 
 `Step #1: (Download)` <b>XAMPP (Apache, MySQL)</b> web server package (only use Apache web server and MySQL database server).
