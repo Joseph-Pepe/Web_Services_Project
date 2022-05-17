@@ -2,7 +2,7 @@
 
 <b>Scripting Language:</b> JavaScript (NodeJS runtime environment)
 
-<b>Web Server:</b> Local Machine (localhost)
+<b>Web Server:</b> Apache (localhost)
 
 <b>Database Server:</b> MySQL
 
