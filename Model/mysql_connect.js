@@ -62,6 +62,8 @@ application.post('/register', urlencodedParser, (req, res) => {
       });
 });
 
+
+// Login to account.
 application.post('/login', urlencodedParser, (req, res) => {
    var username = req.body.username;
    var password = req.body.password;
