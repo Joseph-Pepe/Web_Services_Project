@@ -53,7 +53,7 @@ application.post('/register', urlencodedParser, (req, res) => {
    var salt = bcrypt.genSaltSync(10);
    var hashed_password = bcrypt.hashSync(req.body.password, salt);
    
-   mysql_connection.query("insert into administrators (username, password, firstName, lastName) values ('"+ username + "', '"+ hashed_password + "',  '"+ first_name + "', '"+ last_name + "')", 
+   mysql_connection.query("insert into administrators (username, password) values ('"+ username + "', '"+ hashed_password + "')", 
       (error, rows, fields) => {
          if(!error)
            res.send(`Welcome {$username} to join us`);
