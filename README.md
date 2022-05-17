@@ -2,9 +2,11 @@
 
 <b>Scripting Language:</b> JavaScript (NodeJS runtime environment)
 
+<b>Web Framework:</b> Express
+
 <b>Web Server:</b> Apache (localhost)
 
-<b>Database Server:</b> MySQL
+<b>Database Server:</b> MySQL (NodeJS driver to MySQL)
 
 -----
 
