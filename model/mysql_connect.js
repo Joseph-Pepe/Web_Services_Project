@@ -41,6 +41,35 @@ application.get('/register-form', (req, res) =>
    res.sendFile(__dirname + '/register-form.html');
 });
 
+// Insert Product Form
+application.get('/insert', function(req, res){
+   var html = ";
+   html += "<body>";
+   html += "<form action='/process-insert-form' method='post' name='insert_form'>";
+   html += "<label>Product</label><input type='text' name='product'/>>";
+   html += "<label>Price:</label><input type='text' name='price'/>";
+   html += "<input type='submit' value='submit'/>";
+   html += "<input type='reset' value='reset'/>";
+   html += "</form>";
+   html += "</body>";
+   res.send(html);
+});
+
+application.post('/process-insert-form', urlencodedParser, function(req, res){
+   var reply = ";
+   reply += "Product Submitted: " + req.body.product;
+   reply += "<br/>Price: " + req.body.price;
+   
+   mysql_connection.query("insert into products (product, price) values('"+ req.body.product + "', '"+ req.body.price + "')", 
+      (error, rows, fields) => {
+         if(!error)
+           res.send(rows);
+         else 
+           console.log(error);
+      });
+});
+
+
 
 // Register to database:
 application.post('/register', urlencodedParser, (req, res) => {
@@ -61,6 +90,8 @@ application.post('/register', urlencodedParser, (req, res) => {
            console.log(error);
       });
 });
+
+
 
 
 // Login to account.
