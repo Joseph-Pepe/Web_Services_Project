@@ -12,7 +12,7 @@ Improves communication between the instructor and students during a class sessio
 
 <b>Scripting Language:</b> JavaScript (NodeJS runtime environment)
 
-<b>Web Server:</b> Apache (local machine where the application runs)
+<b>Web Server:</b> Local Machine (localhost)
 
 <b>Database Server:</b> MySQL (PHPMyAdmin)
 
