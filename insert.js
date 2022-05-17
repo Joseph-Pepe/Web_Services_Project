@@ -9,7 +9,7 @@ application.get('/insert', function(req, res){
    html += "<input type='reset' value='reset'/>";
    html += "</form>";
    html += "</body>";
-   htm
+   ht
    
    res.send(html);
 });
