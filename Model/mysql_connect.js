@@ -67,8 +67,6 @@ application.post('/register', urlencodedParser, (req, res) => {
 application.post('/login', urlencodedParser, (req, res) => {
    var username = req.body.username;
    var password = req.body.password;
-   var first_name = req.body.first_name;
-   var last_name = req.body.last_name;
    
    var bcrypt = require('bcrypt.js');
    
@@ -78,7 +76,7 @@ application.post('/login', urlencodedParser, (req, res) => {
             var passwd = rows[0].password;
             bcrypt.compare(password, passwd, function(error, result){
                if(result)
-                 res.send(`${first_name} ${last_name}, welcome to our site!`);
+                 res.send(`${username}, welcome to our site!`);
                else 
                  res.sendFile(__dirname + '/login.html');
             });
