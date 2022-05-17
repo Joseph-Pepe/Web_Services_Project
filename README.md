@@ -125,27 +125,3 @@ To have an application run on this server, place it in the `htdocs` folder and p
 `Step #7:` On the web browser run the `localhost: 7000` on the machine.
 
 ![Screen Shot 2022-05-17 at 7 50 40 AM](https://user-images.githubusercontent.com/32807576/168804438-01a55e71-3e9c-4095-920f-d6a7ff45d129.png)
-
-`Step #8:` Modify the file and restart the node server (restart by stopping the server w/ `control+c` and start it w/ `node app_1.js`).
-
-![Screen Shot 2022-05-17 at 7 54 13 AM](https://user-images.githubusercontent.com/32807576/168805012-404b50b0-d811-459c-a56b-16e780c69ad6.png)
-
-`Step #9:` On the web browser run the url (http://localhost:7000/api/products) on the machine.
-
-![Screen Shot 2022-05-17 at 7 57 07 AM](https://user-images.githubusercontent.com/32807576/168805541-6d28c951-c299-4392-83aa-6fbc4f03b3e8.png)
-
-`Step #10:` Modify the file and restart the node server (change the file by adding another endpoint `api/names`).
-
-![Screen Shot 2022-05-17 at 8 04 48 AM](https://user-images.githubusercontent.com/32807576/168806845-4c9f6219-37c9-4006-b9fb-fea2bb9127ee.png)
-
-`Step #11:` Test run the newly added endpoint (http://localhost:7000/api/names). 
-
-![Screen Shot 2022-05-17 at 8 07 05 AM](https://user-images.githubusercontent.com/32807576/168807219-13fd7a29-2492-42d1-b4d3-3163bdf7b45c.png)
-
-`Step #12:` Make the port dynamic using either environment variable `process.env.PORT` or `7000` (save the file and restart the server). 
-
-![Screen Shot 2022-05-17 at 8 08 43 AM](https://user-images.githubusercontent.com/32807576/168807480-b292a013-7ab8-4b38-9608-7c13f9a4fd23.png)
-
-`Step #13:` Set the environment variable to test dynamic port (on Mac use `export`, or on Windows use `set`).
-
-![Screen Shot 2022-05-17 at 8 11 43 AM](https://user-images.githubusercontent.com/32807576/168807951-2dc2aed0-6f97-4f87-a7e6-9b2122f4ee78.png)
