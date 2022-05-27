@@ -10,8 +10,8 @@ application.use(body_parser.json());
 // [Connection]: Need MySQL database connection.
 var mysql_connection = mysql.createConnection({
    host: 'localhost',
-   user: 'username',
-   password: 'password',
+   user: 'canvas',
+   password: 'software',
    database: 'csit_437',
    multipleStatement: true
 });
