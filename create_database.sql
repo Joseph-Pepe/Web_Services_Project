@@ -13,6 +13,7 @@ CREATE TABLE accounts(
 
 CREATE TABLE products( 
    product_number     INT            NOT NULL   AUTO_INCREMENT, 
+   product_name       VARCHAR(50)    NOT NULL,
 );
 
 
