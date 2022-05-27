@@ -12,7 +12,7 @@ var mysql_connection = mysql.createConnection({
    host: 'localhost',
    user: 'username',
    password: 'password',
-   database: 'database_name',
+   database: 'csit_437',
    multipleStatement: true
 });
 
