@@ -7,24 +7,7 @@
       <link rel = "stylesheet" type = "text/css" href = "Cstyles/side_bar_styles.css"/>
 
    </head>
-      
-      <div id="flexRight">
-         <h2>Welcome <?php echo $account_type . ': ' . $user_name; ?></h2>
-	 <hr/>
-	 <h2 class="top">My Courses</h2>
-         <p>To view a course, select it (i.e., press it).</p>
-         
-         <?php if (count($courses) == 0) : ?>
-            <p>No courses currently exist.</p>
-         <?php else : ?>
-            <?php foreach ($courses as $course) : ?>
-               <p>
-                  <a href="?action=view_course&amp;course_number=<?php echo $course['course_number']; ?>"> <?php echo htmlspecialchars($course['course_name']); ?></a>
-               </p>
-           <?php endforeach; ?>
-        <?php endif; ?>
-	<h2>Add Product (New Product)</h2>
-	<p>To add a course, select the "Add Course" link.</p>
-        <p><a href="index.php?action=show_add_form">Add Course (+)</a></p>
+	
+   <body>
    </body>
 </html>
