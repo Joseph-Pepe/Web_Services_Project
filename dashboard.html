@@ -7,11 +7,7 @@
       <link rel = "stylesheet" type = "text/css" href = "Cstyles/side_bar_styles.css"/>
 
    </head>
-	
-   <body id="flexParent"> 
-      <div id="flexLeft">
-         <?php include 'view/side_bar.php'; ?>
-      </div>
+      
       <div id="flexRight">
          <h2>Welcome <?php echo $account_type . ': ' . $user_name; ?></h2>
 	 <hr/>
@@ -27,9 +23,8 @@
                </p>
            <?php endforeach; ?>
         <?php endif; ?>
-	<h2>Add Course (New Class)</h2>
+	<h2>Add Product (New Product)</h2>
 	<p>To add a course, select the "Add Course" link.</p>
         <p><a href="index.php?action=show_add_form">Add Course (+)</a></p>
-      </div>
    </body>
 </html>
