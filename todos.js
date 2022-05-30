@@ -43,7 +43,7 @@ function clear_all_todos() {
    load_todos(); 
 }
 
-// saves a newly tagged search into localStorage
+// Saves a newly created todo into localStorage.
 function save_todo() {
    var query = document.getElementById("query");
    var tag = document.getElementById("todo");
@@ -66,7 +66,7 @@ function edit_todo(todo){
    load_todos(); 
 }
 
-// Register event handlers then load searches.
+// Register event handlers then load todos.
 function start(){
    var saveButton = document.getElementById( "saveButton" );
    saveButton.addEventListener( "click", save_todo, false );
