@@ -1,12 +1,4 @@
 
-
-
-// Deletes all key/value pairs from localStorage.
-function clear_all_todos(){
-   localStorage.clear();
-   load_todos();
-}
-
 // Saves a newly created todo into localStorage.
 function save_todo(){
    var person_assigned = document.getElementById("person_assigned");
@@ -79,23 +71,20 @@ function load_todos() {
    document.getElementById("todos").innerHTML = markup;
 }
 
-// deletes all key-value pairs from localStorage
-function clearAllSearches() 
-{
+// Deletes all key-value pairs from localStorage
+function clear_all_todos(){
    localStorage.clear();
-   loadSearches(); // reload searches
-} // end function clearAllSearches
+   load_todos(); 
+} 
 
-// saves a newly tagged search into localStorage
-function saveSearch() 
-{
-   var query = document.getElementById("query");
-   var tag = document.getElementById("tag");
-   localStorage.setItem(tag.value, query.value); 
-   tag.value = ""; // clear tag input
-   query.value = ""; // clear query input
-   loadSearches(); // reload searches
-} // end function saveSearch
+function save_todo() {
+   var person_assigned = document.getElementById("person_assigned");
+   var todo = document.getElementById("todo");
+   localStorage.setItem(todo.value, person_assigned.value); 
+   todo.value = ""; 
+   person_assigned.value = ""; 
+   loadtodos();
+} 
 
 // deletes a specific key-value pair from localStorage
 function deleteTag( tag ) 
