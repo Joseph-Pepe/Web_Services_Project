@@ -41,5 +41,8 @@ function clear_all_todos(){
 
 // Saves a newly created todo into localStorage.
 function save_todo(){
-   var tag = document.getElementById("todo");
+   var todo = document.getElementById("todo");
+   localStorage.setItem(todo.value);
+   todo.value = "";
+   loadTodos();
 }
