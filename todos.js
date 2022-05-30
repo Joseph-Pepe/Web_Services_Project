@@ -24,12 +24,12 @@ function load_todos() {
    // Build list of links.
    for (var tag in todo_tags){
       markup += "<li><span>" + todo_tags[tag] + 
-         "</a></span>" +
+         "</span>" +
          "<input id = '" + todo_tags[tag] + "' type = 'button' " + 
             "value = 'Edit' onclick = 'edit_todo(id)'>" +
          "<input id = '" + todo_tags[tag] + "' type = 'button' " + 
             "value = 'Delete' onclick = 'delete_todo(id)'>";
-   } // end for
+   }
 
    markup += "</ul>";
    document.getElementById("todos").innerHTML = markup;
