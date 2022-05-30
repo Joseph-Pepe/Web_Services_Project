@@ -15,5 +15,4 @@ function load_todos(){
    for(var index = 0; index < length; ++index){
       tags[index] = localStorage.key(index); 
    }
-  
 }
