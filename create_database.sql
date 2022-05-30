@@ -13,8 +13,8 @@ CREATE TABLE accounts(
 
 CREATE TABLE todos( 
    todo_number           INT                    NOT NULL,  AUTO_INCREMENT,
-   todo                  VARCHAR(250)           NOT NULL, 
    assigned_person       VARCHAR(250)           NOT NULL,
+   todo                  VARCHAR(250)           NOT NULL
 );
 
 
