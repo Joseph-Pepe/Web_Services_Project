@@ -34,7 +34,7 @@ function load_todos() {
    } // end for
 
    markup += "</ul>";
-   document.getElementById("searches").innerHTML = markup;
+   document.getElementById("todos").innerHTML = markup;
 } 
 
 // Deletes all key-value pairs from localStorage.
