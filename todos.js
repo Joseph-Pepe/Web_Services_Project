@@ -1,19 +1,4 @@
 
-// Saves a newly created todo into localStorage.
-function save_todo(){
-   var person_assigned = document.getElementById("person_assigned");
-   var todo = document.getElementById("todo");
-   localStorage.setItem(todo.value, person_assigned.value);
-   todo.value = "";
-   person_assigned.value = "";
-   load_todos();
-}
-
-// Deletes a specific key/value pair from localStorage.
-function delete_todo(todo){
-   localStorage.removeItem(todo);
-   load_todos();
-}
 
 function edit_todo(todo){
    document.getElementById("person_assigned").value = localStorage[todo];
@@ -77,38 +62,36 @@ function clear_all_todos(){
    load_todos(); 
 } 
 
+// Saves a newly created todo into localStorage.
 function save_todo() {
    var person_assigned = document.getElementById("person_assigned");
    var todo = document.getElementById("todo");
    localStorage.setItem(todo.value, person_assigned.value); 
    todo.value = ""; 
    person_assigned.value = ""; 
-   loadtodos();
+   load_todos();
 } 
 
 // deletes a specific key-value pair from localStorage
-function deleteTag( tag ) 
-{
-   localStorage.removeItem( tag );
-   loadSearches(); // reload searches
-} // end function deleteTag
+function delete_todo(todo) {
+   localStorage.removeItem(todo);
+   load_todos(); 
+}
 
-// display existing tagged query for editing
-function editTag( tag )
-{
-   document.getElementById("query").value = localStorage[ tag ];
-   document.getElementById("tag").value = tag;   
-   loadSearches(); // reload searches
-} // end function editTag
+// Display existing todo for editing.
+function editTag(todo){
+   document.getElementById("person_assigned").value = localStorage[ todo ];
+   document.getElementById("todo").value = todo;   
+   load_todos();
+} 
 
-// register event handlers then load searches
-function start()
-{
-   var saveButton = document.getElementById( "saveButton" );
-   saveButton.addEventListener( "click", saveSearch, false );
-   var clearButton = document.getElementById( "clearButton" );
-   clearButton.addEventListener( "click", clearAllSearches, false );
-   loadSearches(); // load the previously saved searches
-} // end function start
+// Register event handlers then load todos
+function start(){
+   var save_button = document.getElementById("save_button");
+   save_button.addEventListener("click", save_todos, false);
+   var clear_button = document.getElementById("clear_button");
+   clear_button.addEventListener("click", clear_all_todos, false);
+   load_todos();
+} 
 
-window.addEventListener( "load", start, false );
+window.addEventListener("load", start, false);
