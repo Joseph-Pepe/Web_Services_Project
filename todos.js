@@ -112,14 +112,14 @@ function load_todos() {
 } 
 
 // deletes all key-value pairs from localStorage
-function clearAllSearches() 
+function clear_all_todos() 
 {
    localStorage.clear();
    load_todos(); // reload searches
 } // end function clearAllSearches
 
 // saves a newly tagged search into localStorage
-function saveSearch() 
+function save_todo() 
 {
    var query = document.getElementById("query");
    var tag = document.getElementById("tag");
@@ -130,28 +130,27 @@ function saveSearch()
 } // end function saveSearch
 
 // deletes a specific key-value pair from localStorage
-function deleteTag( tag ) 
+function delete_todo( todo ) 
 {
-   localStorage.removeItem( tag );
+   localStorage.removeItem( todo );
    load_todos(); // reload searches
 } // end function deleteTag
 
 // display existing tagged query for editing
-function editTag( tag )
+function edit_todo( todo )
 {
-   document.getElementById("query").value = localStorage[ tag ];
-   document.getElementById("tag").value = tag;   
-   load_todos(); // reload searches
-} // end function editTag
+   document.getElementById("query").value = localStorage[ todo ];
+   document.getElementById("tag").value = todo;   
+   load_todos(); 
+}
 
-// register event handlers then load searches
-function start()
-{
+// Register event handlers then load searches.
+function start(){
    var saveButton = document.getElementById( "saveButton" );
-   saveButton.addEventListener( "click", saveSearch, false );
+   saveButton.addEventListener( "click", save_todo, false );
    var clearButton = document.getElementById( "clearButton" );
-   clearButton.addEventListener( "click", clearAllSearches, false );
-   load_todos(); // load the previously saved searches
-} // end function start
+   clearButton.addEventListener( "click", clear_all_todos, false );
+   load_todos(); 
+} 
 
 window.addEventListener( "load", start, false );
