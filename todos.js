@@ -75,7 +75,7 @@ function load_todos() {
    } // end for
 
    markup += "</ul>";
-   document.getElementById("searches").innerHTML = markup;
+   document.getElementById("todos").innerHTML = markup;
 } 
 
 // deletes all key-value pairs from localStorage
