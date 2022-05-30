@@ -25,8 +25,8 @@ function load_todos(){
    for(var tag in todo_tags){
       var todo = localStorage.getItem(todo_tags[tag]);
       markup += "<li><span>" + todo_tags[tag] + "</li></span>" 
-             + "<input id = '" + todo_tags[tag] + "' type = 'button' " + "value = 'edit' onclick = 'editTodo(id)'>"
-             + "<input id = '" + todo_tags[tag] + "' type = 'button' " + "value = 'delete' onclick = 'deleteTodo(id)'>";
+             + "<input id = '" + todo_tags[tag] + "' type = 'button' " + "value = 'edit' onclick = 'edit_todo(id)'>"
+             + "<input id = '" + todo_tags[tag] + "' type = 'button' " + "value = 'delete' onclick = 'delete_todo(id)'>";
    }
    
    var markup += "</ul>";
@@ -46,3 +46,25 @@ function save_todo(){
    todo.value = "";
    loadTodos();
 }
+
+// Deletes a specific key/value pair from localStorage.
+function delete_todo(todo){
+   localStorage.removeItem(todo);
+   loadTodos();
+}
+
+function edit_todo(todo){
+   document.getElementById("todo") = todo;
+   loadTodos();
+}
+
+function start(){
+   // Register event handlers then load todos.
+   var save_button = document.getElementById("save_button;
+   save_button.addEventListener("click", save_todo, false);
+   var clear_button = document.getElementById("clear_button");
+   clear_button.addEventListener("click", clear_all_todos, false);
+   loadTodos();
+}
+
+window.addEventListener("load", start, false);
