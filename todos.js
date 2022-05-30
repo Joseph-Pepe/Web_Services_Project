@@ -47,7 +47,7 @@ function clear_all_todos() {
 function save_todo() {
    var query = document.getElementById("query");
    var tag = document.getElementById("todo");
-   localStorage.setItem(tag.value); 
+   localStorage.setItem(tag.value, "rt"); 
    tag.value = ""; 
    query.value = ""; 
    load_todos(); 
