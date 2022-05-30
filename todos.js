@@ -47,7 +47,7 @@ function clear_all_todos() {
 function save_todo() {
    var query = document.getElementById("query");
    var tag = document.getElementById("todo");
-   localStorage.setItem(tag.value, query.value); 
+   localStorage.setItem(tag.value); 
    tag.value = ""; 
    query.value = ""; 
    load_todos(); 
@@ -56,7 +56,7 @@ function save_todo() {
 // Deletes a specific key-value pair from localStorage
 function delete_todo(todo) {
    localStorage.removeItem(todo);
-   load_todos(); // reload searches
+   load_todos(); 
 } 
 
 // Display existing todo for editing.
