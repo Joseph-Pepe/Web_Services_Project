@@ -23,8 +23,8 @@ function load_todos(){
    var markup = "<ul>";
    
    for(var tag in todo_tags){
-      var todo = localStorage.getItem(todo_tags[tag]);
-      markup += "<li><span>" + todo_tags[tag] + "</span>" 
+      var person_assigned = localStorage.getItem(todo_tags[tag]);
+      markup += "<li><span>" + person_assigned + ": " + todo_tags[tag] + "</span>" 
              + "<input id = '" + todo_tags[tag] + "' type = 'button' " + "value = 'edit' onclick = 'edit_todo(id)'>"
              + "<input id = '" + todo_tags[tag] + "' type = 'button' " + "value = 'delete' onclick = 'delete_todo(id)'>";
    }
@@ -41,9 +41,11 @@ function clear_all_todos(){
 
 // Saves a newly created todo into localStorage.
 function save_todo(){
+   var person_assigned = document.getElementById("person_assigned");
    var todo = document.getElementById("todo");
-   localStorage.setItem(todo.value);
+   localStorage.setItem(todo.value, person_assigned.value);
    todo.value = "";
+   person_assigned.value = "";
    load_todos();
 }
 
@@ -54,6 +56,7 @@ function delete_todo(todo){
 }
 
 function edit_todo(todo){
+   document.getElementById("person_assigned").value = localStorage[todo];
    document.getElementById("todo").value = todo;
    load_todos();
 }
