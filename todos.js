@@ -32,3 +32,14 @@ function load_todos(){
    var markup += "</ul>";
    document.getElementById("todos").innerHTML = markup;
 }
+
+// Deletes all key/value pairs from localStorage.
+function clear_all_todos(){
+   localStorage.clear();
+   loadTodos();
+}
+
+// Saves a newly created todo into localStorage.
+function save_todo(){
+   var tag = document.getElementById("todo");
+}
