@@ -1,6 +1,3 @@
-
-
-// Loads previously saved todos and displays them in the page.
 function load_todos() {
    // Used to determine whether the user has already visited the page during this browsing session.
    if (!window.sessionStorage.getItem( "herePreviously" )){
