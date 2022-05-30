@@ -36,7 +36,7 @@ function load_todos(){
 // Deletes all key/value pairs from localStorage.
 function clear_all_todos(){
    localStorage.clear();
-   loadTodos();
+   load_todos();
 }
 
 // Saves a newly created todo into localStorage.
@@ -44,27 +44,27 @@ function save_todo(){
    var todo = document.getElementById("todo");
    localStorage.setItem(todo.value);
    todo.value = "";
-   loadTodos();
+   load_todos();
 }
 
 // Deletes a specific key/value pair from localStorage.
 function delete_todo(todo){
    localStorage.removeItem(todo);
-   loadTodos();
+   load_todos();
 }
 
 function edit_todo(todo){
-   document.getElementById("todo") = todo;
-   loadTodos();
+   document.getElementById("todo").value = todo;
+   load_todos();
 }
 
 function start(){
    // Register event handlers then load todos.
-   var save_button = document.getElementById("save_button;
+   var save_button = document.getElementById("save_button");
    save_button.addEventListener("click", save_todo, false);
    var clear_button = document.getElementById("clear_button");
    clear_button.addEventListener("click", clear_all_todos, false);
-   loadTodos();
+   load_todos();
 }
 
 window.addEventListener("load", start, false);
