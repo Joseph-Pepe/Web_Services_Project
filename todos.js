@@ -102,9 +102,9 @@ function load_todos() {
       markup += "<li><span><a href = '" + query + "'>" + todo_tags[tag] + 
          "</a></span>" +
          "<input id = '" + todo_tags[tag] + "' type = 'button' " + 
-            "value = 'Edit' onclick = 'editTag(id)'>" +
+            "value = 'Edit' onclick = 'edit_todo(id)'>" +
          "<input id = '" + todo_tags[tag] + "' type = 'button' " + 
-            "value = 'Delete' onclick = 'deleteTag(id)'>";
+            "value = 'Delete' onclick = 'delete_todo(id)'>";
    } // end for
 
    markup += "</ul>";
