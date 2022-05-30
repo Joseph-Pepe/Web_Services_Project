@@ -8,13 +8,18 @@
    </head> 
    
    <body>
+      <h1>Todos</h1>
+      <p id = "welcomeMessage">
       <form action = "#" id = "todos_form" method = "post">
          <label>Todo:</label>
-         <input id = "todo" type = "text">
+         <input id = "tag" type = "text">
          
          <label>&nbsp;</label>
          <input type="submit" value="Create Todo">
 	 <input type = "reset" value = "Clear"/>
      </form>
+	   
+     <h1>Previously Made Todos</h1>
+     <div id = "todos"></div>
    </body>
 </html>
