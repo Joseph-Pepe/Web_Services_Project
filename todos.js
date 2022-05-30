@@ -20,12 +20,10 @@ function load_todos() {
    todo_tags.sort(); // sort the keys
 
    var markup = "<ul>"; // used to store search link markup
-   var url = "http://search.twitter.com/search?q=";
 
    // Build list of links.
    for (var tag in todo_tags){
-      var query = url + localStorage.getItem(todo_tags[tag]);
-      markup += "<li><span><a href = '" + query + "'>" + todo_tags[tag] + 
+      markup += "<li><span>" + todo_tags[tag] + 
          "</a></span>" +
          "<input id = '" + todo_tags[tag] + "' type = 'button' " + 
             "value = 'Edit' onclick = 'edit_todo(id)'>" +
