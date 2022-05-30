@@ -21,9 +21,9 @@ function load_todos() {
 
    var markup = "<ul>"; // used to store search link markup
 
-   // Build list of links.
-   for (var tag in todo_tags){
-      markup += "<li><span>" + "Assigned: " + tag + ", Task: " + todo_tags[tag] + 
+   // Build list of todos.
+   for (var todo in todo_tags){
+      markup += "<li><span>" + "Assigned: " + localStorage.getItem(todo_tags[todo]) + ", Task: " + todo_tags[todo] + 
          "</span>" +
          "<input id = '" + todo_tags[tag] + "' type = 'button' " + 
             "value = 'Edit' onclick = 'edit_todo(id)'>" +
