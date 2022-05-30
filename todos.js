@@ -23,7 +23,7 @@ function load_todos() {
 
    // Build list of links.
    for (var tag in todo_tags){
-      markup += "<li><span>" + todo_tags[tag] + 
+      markup += "<li><span>" + "Assigned: " + tag + ", Task: " + todo_tags[tag] + 
          "</span>" +
          "<input id = '" + todo_tags[tag] + "' type = 'button' " + 
             "value = 'Edit' onclick = 'edit_todo(id)'>" +
