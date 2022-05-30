@@ -1,3 +1,4 @@
+/*
 // Deletes all key-value pairs from localStorage
 function clear_all_todos(){
    localStorage.clear();
