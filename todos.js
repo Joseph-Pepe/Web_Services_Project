@@ -1,3 +1,4 @@
+/*
 function load_todos() {
    // Used to determine whether the user has already visited the page during this browsing session.
    if (!window.sessionStorage.getItem( "herePreviously" )){
@@ -69,7 +70,7 @@ function start(){
    clear_button.addEventListener("click", clear_all_todos, false);
    load_todos();
 } 
-
+*/
 
 // Array of tags for todos.
 var todo_tags;
@@ -78,45 +79,43 @@ var todo_tags;
 function load_todos() {
    if (!window.sessionStorage.getItem( "herePreviously" )){
       sessionStorage.setItem( "herePreviously", "true" );
-      document.getElementById( "welcomeMessage" ).innerHTML = 
-         "Welcome to the Favorite Twitter Searches App";
-   } // end if
+      document.getElementById( "welcomeMessage" ).innerHTML = "Welcome to Todos Application";
+   }
 
-   var length = localStorage.length; // number of key-value pairs
-   tags = []; // create empty array
+   var length = localStorage.length;
+   todo_tags = [];
 
    // load all keys
-   for (var i = 0; i < length; ++i) 
-   {
-      tags[i] = localStorage.key(i);
+   for (var index = 0; index < length; ++index){
+      todo_tags[index] = localStorage.key(index);
    } // end for
 
-   tags.sort(); // sort the keys
+   todo_tags.sort(); // sort the keys
 
    var markup = "<ul>"; // used to store search link markup
    var url = "http://search.twitter.com/search?q=";
 
    // build list of links
-   for (var tag in tags) 
+   for (var tag in todo_tags) 
    {
-      var query = url + localStorage.getItem(tags[tag]);
-      markup += "<li><span><a href = '" + query + "'>" + tags[tag] + 
+      var query = url + localStorage.getItem(todo_tags[tag]);
+      markup += "<li><span><a href = '" + query + "'>" + todo_tags[tag] + 
          "</a></span>" +
-         "<input id = '" + tags[tag] + "' type = 'button' " + 
+         "<input id = '" + todo_tags[tag] + "' type = 'button' " + 
             "value = 'Edit' onclick = 'editTag(id)'>" +
-         "<input id = '" + tags[tag] + "' type = 'button' " + 
+         "<input id = '" + todo_tags[tag] + "' type = 'button' " + 
             "value = 'Delete' onclick = 'deleteTag(id)'>";
    } // end for
 
    markup += "</ul>";
    document.getElementById("searches").innerHTML = markup;
-} // end function loadSearches
+} 
 
 // deletes all key-value pairs from localStorage
 function clearAllSearches() 
 {
    localStorage.clear();
-   loadSearches(); // reload searches
+   load_todos(); // reload searches
 } // end function clearAllSearches
 
 // saves a newly tagged search into localStorage
@@ -127,14 +126,14 @@ function saveSearch()
    localStorage.setItem(tag.value, query.value); 
    tag.value = ""; // clear tag input
    query.value = ""; // clear query input
-   loadSearches(); // reload searches
+   load_todos(); // reload searches
 } // end function saveSearch
 
 // deletes a specific key-value pair from localStorage
 function deleteTag( tag ) 
 {
    localStorage.removeItem( tag );
-   loadSearches(); // reload searches
+   load_todos(); // reload searches
 } // end function deleteTag
 
 // display existing tagged query for editing
@@ -142,7 +141,7 @@ function editTag( tag )
 {
    document.getElementById("query").value = localStorage[ tag ];
    document.getElementById("tag").value = tag;   
-   loadSearches(); // reload searches
+   load_todos(); // reload searches
 } // end function editTag
 
 // register event handlers then load searches
@@ -152,7 +151,7 @@ function start()
    saveButton.addEventListener( "click", saveSearch, false );
    var clearButton = document.getElementById( "clearButton" );
    clearButton.addEventListener( "click", clearAllSearches, false );
-   loadSearches(); // load the previously saved searches
+   load_todos(); // load the previously saved searches
 } // end function start
 
 window.addEventListener( "load", start, false );
