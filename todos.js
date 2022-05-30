@@ -1,23 +1,3 @@
-
-
-function edit_todo(todo){
-   document.getElementById("person_assigned").value = localStorage[todo];
-   document.getElementById("todo").value = todo;
-   load_todos();
-}
-
-function start(){
-   // Register event handlers then load todos.
-   var save_button = document.getElementById("save_button");
-   save_button.addEventListener("click", save_todo, false);
-   var clear_button = document.getElementById("clear_button");
-   clear_button.addEventListener("click", clear_all_todos, false);
-   load_todos();
-}
-
-
-
-
 // Array of tags for todos.
 var todo_tags;
 
