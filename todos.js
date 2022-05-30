@@ -1,26 +1,3 @@
-/*
-
-// Saves a newly created todo into localStorage.
-function save_todo() {
-   var person_assigned = document.getElementById("person_assigned");
-   var todo = document.getElementById("todo");
-   localStorage.setItem(todo.value, person_assigned.value); 
-   todo.value = ""; 
-   person_assigned.value = ""; 
-   load_todos();
-} 
-
-
-// Register event handlers then load todos
-function start(){
-   var save_button = document.getElementById("save_button");
-   save_button.addEventListener("click", save_todos, false);
-   var clear_button = document.getElementById("clear_button");
-   clear_button.addEventListener("click", clear_all_todos, false);
-   load_todos();
-} 
-*/
-
 // Array of tags for todos.
 var todo_tags;
 
