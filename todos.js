@@ -6,7 +6,7 @@ function load_todos(){
    // Used to determine whether the user has already visited the page during this browsing session.
    if(!sessionStorage.getItem("herePreviously")){
       // Used to display welcome message.
-      sessionStorage.setItem("herePreviously", true);
+      sessionStorage.setItem("herePreviously", "true");
       document.getElementById("welcomeMessage").innerHTML = "Welcome to Todos Application";
    }
    
@@ -24,7 +24,7 @@ function load_todos(){
    
    for(var tag in todo_tags){
       var todo = localStorage.getItem(todo_tags[tag]);
-      markup += "<li><span>" + todo_tags[tag] + "</li></span>" 
+      markup += "<li><span>" + todo_tags[tag] + "</span>" 
              + "<input id = '" + todo_tags[tag] + "' type = 'button' " + "value = 'edit' onclick = 'edit_todo(id)'>"
              + "<input id = '" + todo_tags[tag] + "' type = 'button' " + "value = 'delete' onclick = 'delete_todo(id)'>";
    }
