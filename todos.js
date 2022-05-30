@@ -43,11 +43,11 @@ function clear_all_todos() {
 
 // Saves a newly created todo into localStorage.
 function save_todo() {
-   var query = document.getElementById("query");
+   var person = document.getElementById("person");
    var tag = document.getElementById("todo");
    localStorage.setItem(tag.value, query.value); 
    tag.value = ""; 
-   query.value = ""; 
+   person.value = ""; 
    load_todos(); 
 } 
 
@@ -59,7 +59,7 @@ function delete_todo(todo) {
 
 // Display existing todo for editing.
 function edit_todo(todo){
-   document.getElementById("query").value = localStorage[ todo ];
+   document.getElementById("person").value = localStorage[ todo ];
    document.getElementById("todo").value = todo;   
    load_todos(); 
 }
