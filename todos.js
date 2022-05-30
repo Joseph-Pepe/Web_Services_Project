@@ -1,9 +1,4 @@
 /*
-// Deletes all key-value pairs from localStorage
-function clear_all_todos(){
-   localStorage.clear();
-   load_todos(); 
-} 
 
 // Saves a newly created todo into localStorage.
 function save_todo() {
@@ -15,18 +10,6 @@ function save_todo() {
    load_todos();
 } 
 
-// deletes a specific key-value pair from localStorage
-function delete_todo(todo) {
-   localStorage.removeItem(todo);
-   load_todos(); 
-}
-
-// Display existing todo for editing.
-function editTag(todo){
-   document.getElementById("person_assigned").value = localStorage[ todo ];
-   document.getElementById("todo").value = todo;   
-   load_todos();
-} 
 
 // Register event handlers then load todos
 function start(){
@@ -55,16 +38,15 @@ function load_todos() {
    // load all keys
    for (var index = 0; index < length; ++index){
       todo_tags[index] = localStorage.key(index);
-   } // end for
+   } 
 
    todo_tags.sort(); // sort the keys
 
    var markup = "<ul>"; // used to store search link markup
    var url = "http://search.twitter.com/search?q=";
 
-   // build list of links
-   for (var tag in todo_tags) 
-   {
+   // Build list of links.
+   for (var tag in todo_tags){
       var query = url + localStorage.getItem(todo_tags[tag]);
       markup += "<li><span><a href = '" + query + "'>" + todo_tags[tag] + 
          "</a></span>" +
@@ -78,36 +60,32 @@ function load_todos() {
    document.getElementById("searches").innerHTML = markup;
 } 
 
-// deletes all key-value pairs from localStorage
-function clear_all_todos() 
-{
+// Deletes all key-value pairs from localStorage.
+function clear_all_todos() {
    localStorage.clear();
-   load_todos(); // reload searches
-} // end function clearAllSearches
+   load_todos(); 
+}
 
 // saves a newly tagged search into localStorage
-function save_todo() 
-{
+function save_todo() {
    var query = document.getElementById("query");
-   var tag = document.getElementById("tag");
+   var tag = document.getElementById("todo");
    localStorage.setItem(tag.value, query.value); 
-   tag.value = ""; // clear tag input
-   query.value = ""; // clear query input
-   load_todos(); // reload searches
-} // end function saveSearch
+   tag.value = ""; 
+   query.value = ""; 
+   load_todos(); 
+} 
 
-// deletes a specific key-value pair from localStorage
-function delete_todo(todo) 
-{
+// Deletes a specific key-value pair from localStorage
+function delete_todo(todo) {
    localStorage.removeItem(todo);
    load_todos(); // reload searches
 } // end function deleteTag
 
-// display existing tagged query for editing
-function edit_todo(todo)
-{
+// Display existing todo for editing.
+function edit_todo(todo){
    document.getElementById("query").value = localStorage[ todo ];
-   document.getElementById("tag").value = todo;   
+   document.getElementById("todo").value = todo;   
    load_todos(); 
 }
 
