@@ -57,7 +57,7 @@ function save_todo() {
 function delete_todo(todo) {
    localStorage.removeItem(todo);
    load_todos(); // reload searches
-} // end function deleteTag
+} 
 
 // Display existing todo for editing.
 function edit_todo(todo){
