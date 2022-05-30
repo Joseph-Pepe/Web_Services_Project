@@ -23,7 +23,7 @@ function load_todos() {
 
    // Build list of todos.
    for (var todo in todo_tags){
-      markup += "<li><span>" + "Assigned: " + localStorage.getItem(todo_tags[todo]) + ", Task: " + todo_tags[todo] + 
+      markup += "<li><span>" + "Assigned: " + localStorage.getItem(todo_tags[todo]) + "<br/>Task: " + todo_tags[todo] + 
          "</span>" +
          "<input id = '" + todo_tags[todo] + "' type = 'button' " + 
             "value = 'Edit' onclick = 'edit_todo(id)'>" +
