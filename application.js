@@ -30,14 +30,14 @@ application.listen(port, () => console.log('listening on port 7000...'));
 
 
 // Login Home Page (root):
-application.get('/', (req, res) =>
+application.get('/', (req, res) => {
    // res.sendFile(path, [, options], [, function]): Is used to transfer the files at the given path.
    // The __dirname in a node script returns the path of the folder where the current JavaScript file resides (gets directory name of the currently executing file where './'gives the current working directory).
    res.sendFile(__dirname + '/login.html');
 });
 
 // Register Form:
-application.get('/register-form', (req, res) =>
+application.get('/register-form', (req, res) => {
    res.sendFile(__dirname + '/register-form.html');
 });
 
