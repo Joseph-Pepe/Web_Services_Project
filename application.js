@@ -17,8 +17,8 @@ var mysql_connection = mysql.createConnection({
 });
 
 // [Check Connection]: Check if MySQL starts up and can be accessed.
-mysql_connection.connect((error) => {
-   if(!error)
+mysql_connection.connect((err) => {
+   if(!err)
      console.log('Connection Successful.');
    else
      console.log('Connection Failed.');
@@ -53,8 +53,8 @@ application.post('/register', urlencodedParser, (req, res) => {
    var hashed_password = bcrypt.hashSync(req.body.password, salt);
    
    mysql_connection.query("insert into accounts (username, password) values ('"+ username + "', '"+ hashed_password + "')", 
-      (error, rows, fields) => {
-         if(!error)
+      (err, rows, fields) => {
+         if(!err)
            res.send(`Welcome {$username} to join us`);
          else 
            console.log(error);
@@ -69,10 +69,10 @@ application.post('/login', urlencodedParser, (req, res) => {
    var bcrypt = require('bcrypt.js');
    
    mysql_connection.query('select * from accounts where username = ?', [username], 
-      (error, rows, fields) => {
-         if(!error){
+      (err, rows, fields) => {
+         if(!err){
             var passwd = rows[0].password;
-            bcrypt.compare(password, passwd, function(error, result){
+            bcrypt.compare(password, passwd, function(err, result){
                if(result)
                  res.send(`${username}, welcome to our site!`);
                else 
@@ -106,10 +106,10 @@ application.post('/process-insert-form', urlencodedParser, function(req, res){
    reply += "<br/>Assigned: " + req.body.person;
    
    mysql_connection.query("insert into todos (person_assigned, todo) values('"+ req.body.person_assigned + "', '"+ req.body.todo + "')", 
-      (error, rows, fields) => {
-         if(!error)
+      (err, rows, fields) => {
+         if(!err)
            res.send(rows);
          else 
-           console.log(error);
+           console.log(err);
       });
 });
