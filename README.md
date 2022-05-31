@@ -44,7 +44,7 @@ Allows the user to keep track of tasks by assigning todos (tasks) to employees.
 
 ![Screen Shot 2022-05-17 at 7 50 40 AM](https://user-images.githubusercontent.com/32807576/168804438-01a55e71-3e9c-4095-920f-d6a7ff45d129.png)
 
-`Step #8:` Prepare to install packages (`express` `body-parser`, `mysql`).
+`Step #8:` Prepare to install packages (`express` `body-parser`, `mysql`, `bcryptjs`).
 
 ```command line
 // Small (i) means install.
