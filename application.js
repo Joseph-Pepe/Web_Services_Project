@@ -88,7 +88,7 @@ application.post('/login', urlencodedParser, (req, res) => {
 
 // Insert Todo Form
 application.get('/insert', function(req, res){
-   var html = ";
+   var html = "";
    html += "<body>";
    html += "<form action='/process-insert-form' method='post' name='insert_form'>";
    html += "<label>Person Assigned:</label><input type='text' name='person'/>>";
@@ -101,7 +101,7 @@ application.get('/insert', function(req, res){
 });
 
 application.post('/process-insert-form', urlencodedParser, function(req, res){
-   var reply = ";
+   var reply = "";
    reply += "Todo Submitted: " + req.body.todo;
    reply += "<br/>Assigned: " + req.body.person;
    
