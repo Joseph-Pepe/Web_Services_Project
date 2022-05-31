@@ -52,7 +52,7 @@ application.post('/register', urlencodedParser, (req, res) => {
    var salt = bcrypt.genSaltSync(10);
    var hashed_password = bcrypt.hashSync(req.body.password, salt);
    
-   mysql_connection.query("insert into administrators (username, password) values ('"+ username + "', '"+ hashed_password + "')", 
+   mysql_connection.query("insert into accounts (username, password) values ('"+ username + "', '"+ hashed_password + "')", 
       (error, rows, fields) => {
          if(!error)
            res.send(`Welcome {$username} to join us`);
@@ -68,7 +68,7 @@ application.post('/login', urlencodedParser, (req, res) => {
    
    var bcrypt = require('bcrypt.js');
    
-   mysql_connection.query('select * from administrators where username = ?', [username], 
+   mysql_connection.query('select * from accounts where username = ?', [username], 
       (error, rows, fields) => {
          if(!error){
             var passwd = rows[0].password;
