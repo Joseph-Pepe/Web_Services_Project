@@ -33,7 +33,7 @@ application.listen(port, () => console.log('listening on port 7000...'));
 application.get('/', (req, res) => {
    // res.sendFile(path, [, options], [, function]): Is used to transfer the files at the given path.
    // The __dirname in a node script returns the path of the folder where the current JavaScript file resides (gets directory name of the currently executing file where './'gives the current working directory).
-   res.sendFile(__dirname + '/login.html');
+   res.sendFile(__dirname + '/index.html');
 });
 
 // Register Form:
@@ -76,12 +76,12 @@ application.post('/login', urlencodedParser, (req, res) => {
                if(result)
                  res.send(`${username}, welcome to our site!`);
                else 
-                 res.sendFile(__dirname + '/login.html');
+                 res.sendFile(__dirname + '/index.html');
             });
          }
          else{ 
            // Ask the user to login again.
-           res.sendFile(__dirname + '/login.html');
+           res.sendFile(__dirname + '/index.html');
          }
       });
 });
