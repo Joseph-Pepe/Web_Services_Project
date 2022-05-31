@@ -12,14 +12,15 @@ CREATE TABLE accounts(
 );
 
 CREATE TABLE todos( 
-   todo_number           INT                    NOT NULL,  AUTO_INCREMENT,
+   todo_number           INT                    NOT NULL   AUTO_INCREMENT,
    assigned_person       VARCHAR(250)           NOT NULL,
-   todo                  VARCHAR(250)           NOT NULL
+   todo                  VARCHAR(250)           NOT NULL,
+   PRIMARY KEY (todo_number) 
 );
 
 
 -- Step 3: Populate with users. 
-INSERT INTO accounts (account_id, username, password,) VALUES 
+INSERT INTO accounts (account_id, username, password) VALUES 
 (1, 'jj@montclair.edu', '9788b833f5e94013b7e83a51a4792ea322020945'), 
 (2, 'kk@montclair.edu', '7c6b25ee4af6db0472e5c338206a5cbae911c08b'), 
 (3, 'sd@montclair.edu', '8b0c689ddba0d0ebc7ab0a320635f35c0f1ae23f'),
