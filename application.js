@@ -48,7 +48,7 @@ application.post('/register', urlencodedParser, (req, res) => {
    var first_name = req.body.first_name;
    var last_name = req.body.last_name;
    
-   var bcrypt = require('bcrypt.js');
+   var bcrypt = require('bcryptjs');
    var salt = bcrypt.genSaltSync(10);
    var hashed_password = bcrypt.hashSync(req.body.password, salt);
    
@@ -66,7 +66,7 @@ application.post('/login', urlencodedParser, (req, res) => {
    var username = req.body.username;
    var password = req.body.password;
    
-   var bcrypt = require('bcrypt.js');
+   var bcrypt = require('bcryptjs');
    
    mysql_connection.query('select * from accounts where username = ?', [username], 
       (err, rows, fields) => {
