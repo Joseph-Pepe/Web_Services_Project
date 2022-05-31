@@ -1,5 +1,7 @@
 # Web Application Implementation
 
+Allows the user to keep track of tasks by assigning todos (tasks) to employees.
+
 <b>Scripting Language:</b> JavaScript (NodeJS runtime environment)
 
 <b>Web Framework:</b> Express
