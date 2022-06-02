@@ -57,7 +57,7 @@ application.post('/register', urlencodedParser, (req, res) => {
          if(!err)
            res.send(`Welcome {$username} to join us`);
          else 
-           console.log(error);
+           console.log(err);
       });
 });
 
