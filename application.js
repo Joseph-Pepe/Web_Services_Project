@@ -6,6 +6,8 @@ const body_parser = require('body-parser');
 var urlencodedParser = body_parser.urlencoded({extended: true});
 var application = express();
 application.use(body_parser.json());
+application.use(express.static(__dirname + 'public'))
+
 
 // [Connection]: Need MySQL database connection.
 var mysql_connection = mysql.createConnection({
