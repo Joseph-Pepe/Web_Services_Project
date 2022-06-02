@@ -53,7 +53,7 @@ application.post('/register', urlencodedParser, (req, res) => {
    mysql_connection.query("insert into accounts (username, password) values ('"+ username + "', '"+ hashed_password + "')", 
       (err, rows, fields) => {
          if(!err)
-           res.send(`Welcome {$username} to join us`);
+           res.send(`Welcome ${username} to join us`);
          else 
            console.log(err);
       });
