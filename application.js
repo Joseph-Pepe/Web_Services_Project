@@ -45,8 +45,6 @@ application.get('/register-form', (req, res) => {
 application.post('/register', urlencodedParser, (req, res) => {
    var username = req.body.username;
    var password = req.body.password;
-   var first_name = req.body.first_name;
-   var last_name = req.body.last_name;
    
    var bcrypt = require('bcryptjs');
    var salt = bcrypt.genSaltSync(10);
