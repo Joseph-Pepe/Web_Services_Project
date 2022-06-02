@@ -6,6 +6,8 @@ const body_parser = require('body-parser');
 var urlencodedParser = body_parser.urlencoded({extended: true});
 var application = express();
 application.use(body_parser.json());
+
+// Allows an existing form to use the javascript code (src = "<file_name>").
 application.use(express.static('public'));
 
 
