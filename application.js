@@ -42,7 +42,7 @@ application.get('/register-form', (req, res) => {
 });
 
 // [Dashboard]:
-application.get('/', (req, res) => {
+application.get('/dashboard', (req, res) => {
    res.sendFile(__dirname + '/dashboard.html');
 });
 
