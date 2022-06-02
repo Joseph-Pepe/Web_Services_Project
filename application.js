@@ -53,7 +53,7 @@ application.post('/register', urlencodedParser, (req, res) => {
    mysql_connection.query("insert into accounts (username, password) values ('"+ username + "', '"+ hashed_password + "')", 
       (err, rows, fields) => {
          if(!err)
-           res.send(`Welcome ${username} to join us`);
+           res.sendFile(__dirname + '/dashboard.html');
          else 
            console.log(err);
       });
@@ -72,7 +72,7 @@ application.post('/login', urlencodedParser, (req, res) => {
             var passwd = rows[0].password;
             bcrypt.compare(password, passwd, function(err, result){
                if(result)
-                 res.send(`${username}, welcome to our site!`);
+                 res.sendFile(__dirname + '/dashboard.html');
                else 
                  res.sendFile(__dirname + '/index.html');
             });
