@@ -1,31 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
    <head>
-      <meta charset = "utf-8">
-      <title>Account Registration</title>
-      <link rel = "stylesheet" type = "text/css" href = "style.css"/>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Account Registration | Todos App</title>
+      <link rel="stylesheet" type="text/css" href="style.css"/>
    </head>
   
    <body>
-     <h2>Account Registration</h2>
-   
-     <br/>
-      
-     <form action = "/register" id = "register_form" method = "post">
-        <label>Username:</label>
-        <input type = "text" name = "username" size = "30" required>
-        
-        <br/>
-        
-        <label>Password:</label>
-        <input type = "password" name = "password"  size = "30" required>
-      
-        <input type = "submit" value = "register">
-        <input type = "reset" value = "clear">
-      </form>
-      
-      <br/>
-      
-      Have An Existing Account? <a href = "/">Sign In</a>
+      <main class="form-container">
+         <h2>Create Your Account</h2>
+         <p class="subtitle">Join to start managing your assigned tasks.</p>
+       
+         <form action="/register" id="register_form" method="post">
+            
+            <div class="form-group">
+               <label for="reg-username">Username</label>
+               <input 
+                  type="text" 
+                  id="reg-username" 
+                  name="username" 
+                  required 
+                  minlength="3" 
+                  maxlength="30"
+                  autocomplete="username" 
+                  placeholder="e.g., jdoe_dev"
+               />
+            </div>
+            
+            <div class="form-group">
+               <label for="reg-password">Password</label>
+               <input 
+                  type="password" 
+                  id="reg-password" 
+                  name="password" 
+                  required 
+                  minlength="8" 
+                  autocomplete="new-password" 
+                  placeholder="At least 8 characters"
+               />
+            </div>
+
+            <div class="form-group">
+               <label for="reg-confirm-password">Confirm Password</label>
+               <input 
+                  type="password" 
+                  id="reg-confirm-password" 
+                  name="confirm_password" 
+                  required 
+                  minlength="8" 
+                  autocomplete="new-password" 
+                  placeholder="Re-enter your password"
+               />
+               <span id="password-error" class="error-message" aria-live="polite"></span>
+            </div>
+          
+            <div class="form-actions">
+               <button type="submit" class="btn btn-primary">Register Account</button>
+               <button type="reset" class="btn btn-secondary">Clear Form</button>
+            </div>
+         </form>
+       
+         <footer class="form-footer">
+            <p>Already have an account? <a href="/">Sign In</a></p>
+         </footer>
+      </main>
+
+      <script>
+         document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('register_form');
+            const password = document.getElementById('reg-password');
+            const confirmPassword = document.getElementById('reg-confirm-password');
+            const errorSpan = document.getElementById('password-error');
+
+            const validatePasswords = () => {
+               if (confirmPassword.value && password.value !== confirmPassword.value) {
+                  confirmPassword.setCustomValidity('Passwords do not match.');
+                  errorSpan.textContent = '⚠️ Passwords do not match.';
+               } else {
+                  confirmPassword.setCustomValidity('');
+                  errorSpan.textContent = '';
+               }
+            };
+
+            password.addEventListener('input', validatePasswords);
+            confirmPassword.addEventListener('input', validatePasswords);
+
+            form.addEventListener('submit', (e) => {
+               validatePasswords();
+               if (!form.checkValidity()) {
+                  e.preventDefault();
+               }
+            });
+         });
+      </script>
    </body>
 </html>
