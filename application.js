@@ -1,122 +1,179 @@
-// [Packages]: Gets the required packages.
-const mysql = require('mysql');
+// [Packages]: Import required dependencies once at the module level
 const express = require('express');
-const body_parser = require('body-parser');
+const path = require('path');
+const bcrypt = require('bcryptjs');
+const mysql = require('mysql2/promise'); // Modern promise-based MySQL driver
 
-var urlencodedParser = body_parser.urlencoded({extended: true});
-var application = express();
-application.use(body_parser.json());
+const app = express();
 
-// Allows an existing form to use the javascript code (src = "<file_name>").
-application.use(express.static('public'));
+// [Middleware]: Built-in Express body parsers replace legacy 'body-parser'
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 
-
-// [Connection]: Need MySQL database connection.
-var mysql_connection = mysql.createConnection({
-   host: 'localhost',
-   user: 'canvas',
-   password: 'software',
-   database: 'csit437',
-   multipleStatement: true
+// [Database Pool]: Create a connection pool instead of a single fragile connection
+const dbPool = mysql.createPool({
+  host: process.env.DB_HOST || 'localhost',
+  user: process.env.DB_USER || 'canvas',
+  password: process.env.DB_PASSWORD || 'software',
+  database: process.env.DB_NAME || 'csit437',
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
+  // Security: Keep multipleStatements disabled (default) to prevent SQLi chaining attacks
 });
 
-// [Check Connection]: Check if MySQL starts up and can be accessed.
-mysql_connection.connect((err) => {
-   if(!err)
-     console.log('Connection Successful.');
-   else
-     console.log('Connection Failed.');
+// [Check Connection]: Verify pool initialization on startup
+(async () => {
+  try {
+    const connection = await dbPool.getConnection();
+    console.log('✅ MySQL Database Pool Connection Successful.');
+    connection.release();
+  } catch (err) {
+    console.error('❌ MySQL Connection Failed:', err.message);
+    process.exit(1);
+  }
+})();
+
+// ============================================================================
+// STATIC FILE ROUTES
+// ============================================================================
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// [Application]: Run the app and listen at port 7000.
-const port = 7000;
-application.listen(port, () => console.log('listening on port 7000...'));
-
-
-// [Login Home Page] (root):
-application.get('/', (req, res) => {
-   // res.sendFile(path, [, options], [, function]): Is used to transfer the files at the given path.
-   // The __dirname in a node script returns the path of the folder where the current JavaScript file resides (gets directory name of the currently executing file where './'gives the current working directory).
-   res.sendFile(__dirname + '/index.html');
+app.get('/register-form', (req, res) => {
+  res.sendFile(path.join(__dirname, 'register-form.html'));
 });
 
-// [Register Form]:
-application.get('/register-form', (req, res) => {
-   res.sendFile(__dirname + '/register-form.html');
+app.get('/dashboard', (req, res) => {
+  // Note: In production, wrap this route in a JWT/Session authentication middleware!
+  res.sendFile(path.join(__dirname, 'dashboard.html'));
 });
 
-// [Dashboard]:
-application.get('/dashboard', (req, res) => {
-   res.sendFile(__dirname + '/dashboard.html');
+// ============================================================================
+// AUTHENTICATION & API ROUTES
+// ============================================================================
+
+/**
+ * Register a new user account safely using Bcrypt hashing and Parameterized Queries.
+ */
+app.post('/register', async (req, res) => {
+  try {
+    const { username, password } = req.body;
+
+    if (!username || !password) {
+      return res.status(400).send('Username and password are required.');
+    }
+
+    // Generate salt and hash password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    // Parameterized Query (?) prevents SQL Injection completely
+    const sql = 'INSERT INTO accounts (username, password) VALUES (?, ?)';
+    await dbPool.execute(sql, [username, hashedPassword]);
+
+    res.sendFile(path.join(__dirname, 'dashboard.html'));
+  } catch (err) {
+    console.error('Registration Error:', err.message);
+    // Handle duplicate username (MySQL ER_DUP_ENTRY)
+    if (err.code === 'ER_DUP_ENTRY') {
+      return res.status(409).send('Username already exists.');
+    }
+    res.status(500).send('Internal Server Error during registration.');
+  }
 });
 
-// Register account into database:
-application.post('/register', urlencodedParser, (req, res) => {
-   var username = req.body.username;
-   var password = req.body.password;
-   
-   var bcrypt = require('bcryptjs');
-   var salt = bcrypt.genSaltSync(10);
-   var hashed_password = bcrypt.hashSync(req.body.password, salt);
-   
-   mysql_connection.query("insert into accounts (username, password) values ('"+ username + "', '"+ hashed_password + "')", 
-      (err, rows, fields) => {
-         if(!err)
-           res.sendFile(__dirname + '/dashboard.html');
-         else 
-           console.log(err);
-      });
+/**
+ * Login to account with safe array-bounds checking.
+ */
+app.post('/login', async (req, res) => {
+  try {
+    const { username, password } = req.body;
+
+    if (!username || !password) {
+      return res.status(400).send('Username and password are required.');
+    }
+
+    const sql = 'SELECT * FROM accounts WHERE username = ?';
+    const [rows] = await dbPool.execute(sql, [username]);
+
+    // CRITICAL FIX: Verify user exists before reading properties to prevent crash
+    if (rows.length === 0) {
+      console.warn(`Failed login attempt for non-existent user: ${username}`);
+      return res.sendFile(path.join(__dirname, 'index.html'));
+    }
+
+    const user = rows[0];
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (isMatch) {
+      res.sendFile(path.join(__dirname, 'dashboard.html'));
+    } else {
+      console.warn(`Invalid password attempt for user: ${username}`);
+      res.sendFile(path.join(__dirname, 'index.html'));
+    }
+  } catch (err) {
+    console.error('Login Error:', err.message);
+    res.status(500).send('Internal Server Error during login.');
+  }
 });
 
-// Login to account.
-application.post('/login', urlencodedParser, (req, res) => {
-   var username = req.body.username;
-   var password = req.body.password;
-   
-   var bcrypt = require('bcryptjs');
-   
-   mysql_connection.query('select * from accounts where username = ?', [username], 
-      (err, rows, fields) => {
-         if(!err){
-            var passwd = rows[0].password;
-            bcrypt.compare(password, passwd, function(err, result){
-               if(result)
-                 res.sendFile(__dirname + '/dashboard.html');
-               else 
-                 res.sendFile(__dirname + '/index.html');
-            });
-         }
-         else{ 
-           // Ask the user to login again.
-           res.sendFile(__dirname + '/index.html');
-         }
-      });
+/**
+ * Render dynamic TODO insertion form.
+ */
+app.get('/insert', (req, res) => {
+  const html = `
+    <!DOCTYPE html>
+    <html>
+    <head><title>Add Todo</title></head>
+    <body>
+      <h2>Assign New Task</h2>
+      <form action="/process-insert-form" method="post" name="insert_form">
+        <label>Person Assigned:</label>
+        <input type="text" name="person" required /><br/><br/>
+        <label>Task:</label>
+        <input type="text" name="todo" required /><br/><br/>
+        <input type="submit" value="Submit Task" />
+        <input type="reset" value="Reset Form" />
+      </form>
+    </body>
+    </html>
+  `;
+  res.send(html);
 });
 
-// Insert Todo Form
-application.get('/insert', function(req, res){
-   var html = "";
-   html += "<body>";
-   html += "<form action='/process-insert-form' method='post' name='insert_form'>";
-   html += "<label>Person Assigned:</label><input type='text' name='person'/>>";
-   html += "<label>Task:</label><input type='text' name='todo'/>";
-   html += "<input type='submit' value='submit'/>";
-   html += "<input type='reset' value='reset'/>";
-   html += "</form>";
-   html += "</body>";
-   res.send(html);
+/**
+ * Process TODO insertion safely using aligned payload keys.
+ */
+app.post('/process-insert-form', async (req, res) => {
+  try {
+    // CRITICAL FIX: Aligned property name from 'person_assigned' to 'person'
+    const { person, todo } = req.body;
+
+    if (!person || !todo) {
+      return res.status(400).send('Both Person Assigned and Task fields are required.');
+    }
+
+    // Parameterized Query protects against SQL Injection
+    const sql = 'INSERT INTO todos (person_assigned, todo) VALUES (?, ?)';
+    const [result] = await dbPool.execute(sql, [person, todo]);
+
+    res.status(201).send(`
+      <h3>✅ Todo Submitted Successfully!</h3>
+      <p><strong>Task:</strong> ${todo}</p>
+      <p><strong>Assigned To:</strong> ${person}</p>
+      <p><em>Database Insert ID: ${result.insertId}</em></p>
+      <a href="/insert">Add Another Task</a> | <a href="/dashboard">View Dashboard</a>
+    `);
+  } catch (err) {
+    console.error('Todo Insertion Error:', err.message);
+    res.status(500).send('Internal Server Error while saving todo.');
+  }
 });
 
-application.post('/process-insert-form', urlencodedParser, function(req, res){
-   var reply = "";
-   reply += "Todo Submitted: " + req.body.todo;
-   reply += "<br/>Assigned: " + req.body.person;
-   
-   mysql_connection.query("insert into todos (person_assigned, todo) values('"+ req.body.person_assigned + "', '"+ req.body.todo + "')", 
-      (err, rows, fields) => {
-         if(!err)
-           res.send(rows);
-         else 
-           console.log(err);
-      });
-});
+// [Start Server]:
+const port = process.env.PORT || 7000;
+app.listen(port, () => console.log(`🚀 Server actively listening on port ${port}...`));
