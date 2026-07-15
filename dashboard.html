@@ -1,31 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
    <head>
-      <meta charset = "utf-8">
-      <title>Homepage</title>
-      <link rel = "stylesheet" type = "text/css" href = "style.css"/>
-      <script src = "/todos.js"></script>
-
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Task Dashboard | Todos App</title>
+      <link rel="stylesheet" type="text/css" href="style.css"/>
+      <script src="/todos.js" defer></script>
    </head> 
    
    <body>
-      <h2>Todos</h2>
-      <p id = "welcomeMessage">
-      <form action = "#">
-	 <label>Person Assigned:</label>      
-	 <input id = "person" type = "text">
-	      
-	 <br/>
-	      
-         <label>Todo:</label>
-         <input id = "todo" type = "text">
-	 
-         <label>&nbsp;</label>
-         <input type="button" value="Save" id = "saveButton">
-	 <input type = "button" value = "Clear All Saved Todos" id = "clearButton"/>
-     </form>
-	   
-     <h3>Todos Previously Created</h3>
-     <div id = "todos"></div>
+      <div class="app-layout">
+         <header class="app-header">
+            <div>
+               <h1>Task Dashboard</h1>
+               <p id="welcomeMessage" class="subtitle" aria-live="polite"></p>
+            </div>
+            <nav class="user-nav">
+               <a href="/" class="btn btn-secondary btn-small">Sign Out</a>
+            </nav>
+         </header>
+
+         <main class="form-container dashboard-form">
+            <h2>Assign New Task</h2>
+            
+            <form id="todo-form" action="#" method="post" onsubmit="return false;">
+               
+               <div class="form-group">
+                  <label for="person">Person Assigned</label>
+                  <input 
+                     type="text" 
+                     id="person" 
+                     name="person" 
+                     required 
+                     placeholder="e.g., Alice Smith"
+                     autocomplete="name"
+                  />
+               </div>
+               
+               <div class="form-group">
+                  <label for="todo">Task Description</label>
+                  <input 
+                     type="text" 
+                     id="todo" 
+                     name="todo" 
+                     required 
+                     placeholder="e.g., Update Q3 Financial Documents"
+                  />
+               </div>
+               
+               <div class="form-actions">
+                  <button type="button" id="saveButton" class="btn btn-primary">Save Task</button>
+                  <button type="button" id="clearButton" class="btn btn-danger">Clear All Saved Todos</button>
+               </div>
+            </form>
+         </main>
+         
+         <section class="todo-list-section">
+            <div class="section-header">
+               <h3>Previously Assigned Tasks</h3>
+               <span class="hint-text">Click Edit or Delete on any task to modify</span>
+            </div>
+            
+            <div id="todos" class="todo-container" aria-live="polite">
+               </div>
+         </section>
+      </div>
    </body>
 </html>
