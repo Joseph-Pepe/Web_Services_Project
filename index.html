@@ -1,33 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
    <head>
-      <meta charset = "utf-8">
-      <title>Account Login</title>
-      <link rel = "stylesheet" type = "text/css" href = "style.css"/>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Sign In | Todos App</title>
+      <link rel="stylesheet" type="text/css" href="style.css"/>
    </head>
    
-   
-  
    <body>
-     <h2>Account Login</h2>
-      
-     <br/>
-      
-     <form action = "/login" id = "login_form" method = "post">
-        <label>Username:</label>
-        <input type = "text" name = "username" size = "30" required>
-        
-        <br/>
-        
-        <label>Password:</label>
-        <input type = "password" name = "password"  size = "30" required>
-      
-        <input type = "submit" value = "login">
-        <input type = "reset" value = "clear">
-     </form>
-      
-     <br/>
-      
-     Don't Have An Account? <a href = "/register-form">Register (Sign Up)</a>
+      <main class="form-container">
+         <h2>Account Login</h2>
+         <p class="subtitle">Please enter your credentials to access your dashboard.</p>
+         
+         <form action="/login" id="login_form" method="post">
+            
+            <div class="form-group">
+               <label for="login-username">Username</label>
+               <input 
+                  type="text" 
+                  id="login-username" 
+                  name="username" 
+                  required 
+                  autocomplete="username" 
+                  placeholder="Enter your username"
+               />
+            </div>
+            
+            <div class="form-group">
+               <label for="login-password">Password</label>
+               <input 
+                  type="password" 
+                  id="login-password" 
+                  name="password" 
+                  required 
+                  autocomplete="current-password" 
+                  placeholder="Enter your password"
+               />
+            </div>
+          
+            <div class="form-actions">
+               <button type="submit" class="btn btn-primary">Sign In</button>
+               <button type="reset" class="btn btn-secondary">Clear</button>
+            </div>
+         </form>
+         
+         <footer class="form-footer">
+            <p>Don't have an account? <a href="/register-form">Register (Sign Up)</a></p>
+         </footer>
+      </main>
    </body>
 </html>
