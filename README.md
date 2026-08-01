@@ -50,5 +50,3 @@
 ```
 
 ![Screen Shot 2022-05-17 at 3 12 12 PM](https://user-images.githubusercontent.com/32807576/168891898-bff49027-e956-4fc4-bbb3-f7d2a661d230.png)
-
-![Screen Shot 2022-05-17 at 3 12 44 PM](https://user-images.githubusercontent.com/32807576/168891984-46989b90-87e7-455e-b734-52ad4d496ff4.png)
