@@ -42,11 +42,11 @@
 
 ![Screen Shot 2022-05-17 at 7 50 40 AM](https://user-images.githubusercontent.com/32807576/168804438-01a55e71-3e9c-4095-920f-d6a7ff45d129.png)
 
-`Step #8:` Prepare to install packages (`express` `body-parser`, `mysql`, `bcryptjs`).
+`Step #8:` Prepare to install packages (`express`, `mysql2`, `bcryptjs`).
 
 ```command line
 // Small (i) means install.
-> npm i --s express express-handlers mysql body-parser
+> npm install --save express mysql2
 ```
 
 ![Screen Shot 2022-05-17 at 3 12 12 PM](https://user-images.githubusercontent.com/32807576/168891898-bff49027-e956-4fc4-bbb3-f7d2a661d230.png)
